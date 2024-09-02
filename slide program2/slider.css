@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Sofia);
+body{
+    font-family: Poppins;
+    margin: 0;
+    background-color: #010101;
+    color: #eee;
+}
+svg{
+    width: 25px;
+}
+header{
+    width: 1200px;
+    max-width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    grid-template-rows: 50px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header .logo{
+    font-weight: bold;
+}
+header .menu{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: 500;
+}
+/* css slider */
+.slider{
+    height: 100vh;
+    /* margin-top: -50px; */
+    position: relative;
+}
+.slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .list .item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top, #000 40%, transparent
+    );
+}
+.slider .list .item .content{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+}
+.slider .list .item .content p:nth-child(1){
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: #eee;
+}
+.slider .list .item .content h2{
+    font-size: 100px;
+    margin: 0;
+    color: #eee;
+}
+.slider .list .item.active{
+    opacity: 1;
+    z-index: 10;
+    color: #eee;
+}
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3){
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s .7s ease-in-out 1 forwards;
+}
+.slider .list .item.active h2{
+    animation-delay: 1s;
+}
+.slider .list .item.active p:nth-child(3){
+    animation-duration: 1.3s;
+}
+.arrows{
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    z-index: 100;
+}
+.arrows button{
+    background-color: #eee5;
+    border: none;
+    font-family: monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: x-large;
+    color: #eee;
+    transition: .5s;
+}
+.arrows button:hover{
+    background-color: #eee;
+    color: black;
+}
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    z-index: 11;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: center;
+}
+.thumbnail::-webkit-scrollbar{
+    width: 0;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    filter: brightness(.5);
+    transition: .5s;
+    flex-shrink: 0;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.thumbnail .item.active{
+    filter: brightness(1.5);
+}
+.thumbnail .item .content{
+    position: absolute;
+    inset: auto 10px 10px 10px;
+}
+@media screen and (max-width: 678px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .slider .list .item .content h2{
+        font-size: 60px;
+    }
+    .arrows{
+        top: 10%;
+    }
+}
+
+/* Container for the icons */
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    gap: -50px;
+    margin-right: 150px;
+    margin-left: 150px;
+    padding-top: 20px;
+}
+
+/* Individual icon cards */
+.icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 140px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+/* Icon hover effect */
+.icon-card:hover {
+    transform: scale(1.05);
+}
+
+/* Icon styling */
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Text styling for the labels */
+.icon-label {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+/* Specific background color for 'Programming & Tech' */
+.programming-tech {
+    background-color: #e0f7e9; /* Change this color for different hover effect */
+}
+
+.service {
+ font-family:serif;
+ margin-left: 50px;
+ margin-top: 50px;
+}
+
+/* for box card */
+/* body {
+    font-family: Arial, sans-serif; */
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+} */
+
+/* .card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; Space between the containers */
+/* } */
+
+/* .container {
+    width: 300px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-container {
+    padding: 15px;
+}
+
+.content-container h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.content-container p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+} */
+
+/* for words */
+ .words{
+    font-family:serif;
+    margin-left: 35px;
+    margin-top: 50px;
+ }
+
+ .btn btn-outline-success{
+    margin-right: 10px;
+ }
+
+
+
+
+ /* course */
+body {
+    font-family: 'Your Preferred Font', sans-serif;
+    background-color: #your-background-color; /* Match your website's background */
+    margin: 0;
+    padding: 0;
+}
+
+.courses-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0f8ff; /* Update this color to match your site */
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333; /* Match your primary text color */
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #666; /* Adjust according to your design */
+    margin-bottom: 30px;
+}
+
+.courses-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.course-icon img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.course-info .course-duration {
+    font-size: 0.9rem;
+    color: #888; /* Match with your secondary text color */
+}
+
+.course-info .course-title {
+    font-size: 1.2rem;
+    color: #222;
+    margin: 8px 0;
+}
+
+.course-info .course-rating {
+    font-size: 0.9rem;
+    color: #ff9800; /* Use your rating star color */
+}
+
+.course-info .course-link {
+    font-size: 0.9rem;
+    color: #007bff; /* Link color matching your website */
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.course-link:hover {
+    color: #0056b3; /* Hover color for links */
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel-controls button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff; /* Adjust based on your theme */
+    margin: 0 10px;
+}
+
+.carousel-controls button:hover {
+    color: #0056b3;
+}
